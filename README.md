@@ -10,4 +10,10 @@
 ## Spring IoC
 - [HelloWorld](https://github.com/Yixiaohan/Spring-Core/blob/master/02_HelloWorld.md)
 
+- [Spring IoC Introduction](https://github.com/Yixiaohan/Spring-Core/blob/master/03_spring_IoC_introduction.md)
+
+- [ID, Name, Alias of Bean  -  id 、name、 alias](https://github.com/Yixiaohan/Spring-Core/blob/master/04_id_name_aliasOfBean.md)
+
+- [Setter 注入  -  property](https://github.com/Yixiaohan/Spring-Core/blob/master/05_setter.md)
+
 
