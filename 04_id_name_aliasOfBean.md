@@ -229,4 +229,19 @@ public class IdentifierTest {
 
 ```
 
+## 输出
+
+
+```
+{"id":0,"username":"com.jiangge.beans.User or com.jiangge.beans.User#0"}
+{"id":0,"username":"com.jiangge.beans.User or com.jiangge.beans.User#0"}
+{"id":0,"username":"com.jiangge.beans.User#1"}
+{"id":0,"username":"com.jiangge.beans.User#2"}
+{"id":0,"username":"Robert"}
+{"id":0,"username":"Robert"}
+{"id":0,"username":"Robert"}
+{"id":0,"username":"Alice"}
+{"id":0,"username":"Alice"}
+{"id":0,"username":"Alice"}
+```
 
