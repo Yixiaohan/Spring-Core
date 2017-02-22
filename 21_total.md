@@ -10,7 +10,7 @@
 * 使用 JUnit 来执行测试的内容，这样可以在一个类里有多个可执行的方法，方便测试不同的内容
 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -77,7 +77,7 @@
 叫做 Bean configuration file，定义 bean 的属性和其他 bean 之间的依赖，Spring 根据 bean 的定义生成 bean。
 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -91,7 +91,7 @@
 
 ## UserDao
 
-```
+```java
 package com.jiangge.dao;
 
 public interface UserDao {
@@ -102,7 +102,7 @@ public interface UserDao {
 ## UserDaoMySqlImpl
 
 
-```
+```java
 package com.jiangge.dao;
 
 public class UserDaoMySqlImpl implements UserDao {
@@ -117,7 +117,7 @@ public class UserDaoMySqlImpl implements UserDao {
 ## UserDaoOracleImpl
 
 
-```
+```java
 package com.jiangge.dao;
 
 public class UserDaoOracleImpl implements UserDao {
@@ -131,7 +131,7 @@ public class UserDaoOracleImpl implements UserDao {
 
 ## HelloWorld
 
-```
+```java
 import com.jiangge.dao.UserDao;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -158,15 +158,16 @@ UserDaoMySqlImpl.deleteUser()
 
 ## 更换 UserDao 的实现
 
-```
+```xml
 <bean id="userDao" class="com.jiangge.dao.UserDaoMySqlImpl"/> 
 ```
 
 修改为
 
-```
+```xml
 <bean id="userDao" class="com.jiangge.dao.UserDaoOracleImpl"/>，
 ```
+
 输出
 `UserDaoOracleImpl.deleteUser()`
 
@@ -235,7 +236,7 @@ com.jiangge.beans.User#3
 ## spring-beans.xml
 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -275,7 +276,7 @@ com.jiangge.beans.User#3
 
 ## com.jiangge.beans.User;
 
-```
+```java
 package com.jiangge.beans;
 
 
@@ -299,7 +300,7 @@ public class User {
 ## IdentifierTest
 
 
-```
+```java
 import com.jiangge.beans.User;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -436,7 +437,7 @@ public class IdentifierTest {
 
 ## CommonUtils
 
-```
+```java
 package com.jiangge.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -476,7 +477,7 @@ public class CommonUtils {
 
 ## User
 
-```
+```java
 package com.jiangge.beans;
 
 public class User {
@@ -492,7 +493,7 @@ public class User {
 ## Address
 
 
-```
+```java
 package com.jiangge.beans;
 
 public class Address {
@@ -507,7 +508,7 @@ public class Address {
 
 ## spring-beans.xml
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -531,7 +532,7 @@ public class Address {
 
 ## InjectionTest
 
-```
+```java
 import com.jiangge.beans.User;
 import com.jiangge.util.CommonUtils;
 import org.junit.BeforeClass;
@@ -587,7 +588,7 @@ public class InjectionTest {
 
 ## value 用 element 的方式如下注入:
 
-```
+```xml
 <bean id="user" class="com.jiangge.beans.User">
   <property name="username">
       <value>Alice</value>
@@ -600,7 +601,7 @@ public class InjectionTest {
 
 ## ref 用 element 的方式如下注入:
 
-```
+```xml
 <bean id="user" class="com.jiangge.beans.User">
   <property name="username" value="Alice"/>
   <property name="password" value="Passw0rd"/>
@@ -616,7 +617,7 @@ public class InjectionTest {
 使用 `<bean>`，不能设置 id, name 等。
 
 
-```
+```xml
 <bean id="user" class="com.jiangge.beans.User">
    <property name="username" value="Alice"/>
    <property name="password" value="Passw0rd"/>
@@ -642,7 +643,7 @@ public class InjectionTest {
 ## Customer
 
 
-```
+```java
 package com.jiangge.beans;
 
 
@@ -675,7 +676,7 @@ public class Customer {
 
 ## spring-beans.xml
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -692,7 +693,7 @@ public class Customer {
 
 ## InjectionTest
 
-```
+```java
 import com.jiangge.beans.Customer;
 import com.jiangge.util.CommonUtils;
 import org.junit.BeforeClass;
@@ -719,7 +720,7 @@ public class InjectionTest {
 
 ## 构造函数注入时，可以增加 type 字段
 
-```
+```xml
 <bean id="customer" class="com.jiangge.beans.Customer">
    <constructor-arg type="java.lang.String" value="Alice"/>
    <constructor-arg type="int" value="40"/>
@@ -737,7 +738,7 @@ public class InjectionTest {
 
 
 
-```
+```java
 package com.jiangge.beans;
 
 import java.util.*;
@@ -755,7 +756,7 @@ public class CollectionHolder {
 ```
 
 ## User
-```
+```java
 package com.jiangge.beans;
 
 public class User {
@@ -779,7 +780,7 @@ public class User {
 
 ## spring-beans.xml
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -890,7 +891,7 @@ public class User {
 
 ## InjectionTest
 
-```
+```xml
 import com.jiangge.beans.CollectionHolder;
 import com.jiangge.beans.Customer;
 import com.jiangge.beans.User;
@@ -970,7 +971,7 @@ public class InjectionTest {
 
 # ListFactoryBean 注入 List -- 使用 `<util:list>`
 
-```
+```xml
     <!-- 注入list,使用 value -->
     <bean id="listExample" class="com.jiangge.beans.CollectionHolder">
         <property name="list">
@@ -990,7 +991,7 @@ public class InjectionTest {
 
 ## spring-beans.xml
 
-```
+```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
 
  <beans xmlns="http://www.springframework.org/schema/beans"
@@ -1032,7 +1033,7 @@ public class InjectionTest {
 
 ## 测试 ListFactoryBeanTest
 
-```
+```java
 import com.xtuer.beans.CollectionHolder;
 import com.xtuer.util.CommonUtils;
 import org.junit.BeforeClass;
@@ -1072,7 +1073,7 @@ public class ListFactoryBeanTest {
 
 # SetFactoryBean 注入 Set -- `<util:set>`
 
-```
+```xml
 <bean id="setExample" class="com.jiangge.beans.CollectionHolder">
    <property name="set">
        <set> <!--表示是 set-->
@@ -1090,7 +1091,8 @@ public class ListFactoryBeanTest {
 ## spring-beans.xml
 
 
-```<?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
@@ -1117,7 +1119,7 @@ public class ListFactoryBeanTest {
 	
 ## SetFactoryBeanTest
 
-```
+```java
 import com.jiangge.beans.CollectionHolder;
 import com.jiangge.util.CommonUtils;
 import org.junit.BeforeClass;
@@ -1158,7 +1160,7 @@ public class SetFactoryBeanTest {
 
 # MapFactoryBean 注入 Map -- 使用`<util:map>`
 
-```
+```xml
 <bean id="mapExample" class="com.jiangge.beans.CollectionHolder">
    <property name="map">
        <map> <!--表示是 map-->
@@ -1175,7 +1177,7 @@ public class SetFactoryBeanTest {
 ## spring-beans.xml
 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -1205,7 +1207,7 @@ public class SetFactoryBeanTest {
 ## MapFactoryBeanTest
 
 
-```
+```java
 import com.jiangge.beans.CollectionHolder;
 import com.jiangge.util.CommonUtils;
 import org.junit.BeforeClass;
@@ -1594,7 +1596,7 @@ Bean 在配置文件中定义的顺序任意，其实最后就是把所有的配
 ```
 ## spring-beans-2.xml
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -1612,7 +1614,7 @@ Bean 在配置文件中定义的顺序任意，其实最后就是把所有的配
 ## spring-beans.xml
 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -1804,7 +1806,7 @@ public class PropertyPlaceholderTest {
 ## spring-beans.xml
 
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -1823,7 +1825,7 @@ public class PropertyPlaceholderTest {
 
 这里，我们使用@Component
 
-```
+```java
 package com.jiangge.beans;
 
 import org.springframework.stereotype.Component;
@@ -1845,7 +1847,7 @@ public class House {
 
 ## 测试 ComponentScanTest
 
-```
+```java
 import com.jiangge.beans.House;
 import com.jiangge.util.CommonUtils;
 import org.junit.Assert;
@@ -1878,7 +1880,7 @@ public class ComponentScanTest {
 ## 输出
 
 
-```
+```json
 {
     "description" : null
 }
@@ -2002,7 +2004,7 @@ public class ComponentScanTest {
 
 ## 输出
 
-```
+```json
 {
     "description" : null,
     "door" : {
@@ -2021,7 +2023,7 @@ public class ComponentScanTest {
 
 door1、door2的类型都为 Door
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -2041,7 +2043,8 @@ door1、door2的类型都为 Door
 ## House
 
 使用 `@Qualifier("door1")` ，注入标志为 door1 的 Bean
-```
+
+```xml
 package com.jiangge.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -2083,7 +2086,7 @@ public class House {
 
 ## 添加 aop 相关依赖
 
-```
+```xml
    <dependency>
        <groupId>org.springframework</groupId>
        <artifactId>spring-aop</artifactId>
@@ -2099,7 +2102,7 @@ public class House {
 
 pointcut 表示需要织入切面的地方
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -2129,7 +2132,7 @@ pointcut 表示需要织入切面的地方
 ```
 ## Service
 
-```
+```java
 package service;
 
 public class Service 
@@ -2142,7 +2145,7 @@ public class Service
 ```
 ## CallAdvide
 
-```
+```java
 package aop;
 
 import org.aspectj.lang.JoinPoint;
@@ -2214,7 +2217,7 @@ public class CallAdvice
 
 ## 测试 AspectJXmlAOPTest
 
-```
+```java
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -2257,7 +2260,7 @@ public class AspectJXmlAOPTest
 
 ## 需要添加依赖
    
-```
+```xml
 <dependency>
        <groupId>org.springframework</groupId>
        <artifactId>spring-aop</artifactId>
