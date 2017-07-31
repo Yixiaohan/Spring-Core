@@ -34,7 +34,7 @@ Mac OS X、IntelliJ IDEA 、Spring
 
 - [property_editor](https://github.com/Yixiaohan/Spring-Core/blob/master/12_property_editor.md)
 
-- [import_bean_configuration](https://github.com/Yixiaohan/Spring-Core/blob/master/ 13_import_bean_configuration.md)
+- [import_bean_configuration](https://github.com/Yixiaohan/Spring-Core/blob/master/13_import_bean_configuration.md)
 
 - [property_placeholder](https://github.com/Yixiaohan/Spring-Core/blob/master/14_property_placeholder.md)
 
